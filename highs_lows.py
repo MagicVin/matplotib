@@ -18,7 +18,7 @@ def draw(filename1,filename2,string):
             try:
 
                 current_date = datetime.strptime(row[0],"%Y-%m-%d")
-                f1_date = "f1-" + str(current_date).split("-")[1].split()[0]
+                f1_date = "1." + str(current_date).split("-")[1].split()[0]
                 #print("f1_date = " ,f1_date)
 
                 high = int(row[1])
@@ -41,7 +41,7 @@ def draw(filename1,filename2,string):
             try:
                 current_date = datetime.strptime(row[0],"%Y-%m-%d")
                 #f2_date = "f2." + str(current_date)[:7]
-                f2_date = "f2-" + str(current_date).split("-")[1].split()[0]
+                f2_date = "2." + str(current_date).split("-")[1].split()[0]
                 high = int(row[1])
                 low = int(row[3])
             except ValueError:
@@ -64,12 +64,12 @@ def draw(filename1,filename2,string):
     #print("test_list = ",test_list)
     #print("format_list = ",format_list)
     format_list.sort(key=test_list.index)
-    print("format_list.sort = ",format_list)
+    #print("format_list.sort = ",format_list)
 
-    #plt.plot(format_list,highs,c='red')
+    plt.plot(format_list,highs,c='red')
     #plt.plot(format_list,lows,c='blue')
     #填充温差颜色
-    plt.fill_between(dates,highs,lows,facecolor='blue',alpha=0.1)
+    #plt.fill_between(format_list,highs,lows,facecolor='blue',alpha=0.1)
     #fig.autofmt_xdate()
     plt.xlabel('',fontsize=16)
     plt.ylabel("Temperatures(F)",fontsize=16)
@@ -81,4 +81,4 @@ draw(filename1,filename2,str1)
 
 
 
-#plt.show()
+plt.show()
