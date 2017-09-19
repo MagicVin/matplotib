@@ -1,6 +1,9 @@
 #!/usr/bin/python3
+#原文：
+#import pygal
+#wm = pygal.World()
+#pygal.Worldmap()被World()代替
 from pygal.maps.world import World
-
 wm = World()
 wm.title = 'Populations of Countries in North America'
 wm.add('North America', {'ca':34126000,'us':309349000,'mx':113423000})
