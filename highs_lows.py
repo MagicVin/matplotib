@@ -33,24 +33,24 @@ def draw(filename1,filename2,string):
                 test_list.append(f1_date)
                 #print("f2_date = " ,f2_date)
 
-    with open(filename2) as n:
-        reader = csv.reader(n)
-        header_row = next(reader)
+#    with open(filename2) as n:
+#        reader = csv.reader(n)
+#        header_row = next(reader)
 
-        for row in reader:
-            try:
-                current_date = datetime.strptime(row[0],"%Y-%m-%d")
+#        for row in reader:
+#            try:
+#                current_date = datetime.strptime(row[0],"%Y-%m-%d")
                 #f2_date = "f2." + str(current_date)[:7]
-                f2_date = "2." + str(current_date).split("-")[1].split()[0]
-                high = int(row[1])
-                low = int(row[3])
-            except ValueError:
-                print(current_date,'missing data')
-            else:
-                dates.append(current_date)
-                highs.append(high)
-                lows.append(low)
-                test_list.append(f2_date)
+#                f2_date = "2." + str(current_date).split("-")[1].split()[0]
+#                high = int(row[1])
+#                low = int(row[3])
+#            except ValueError:
+#                print(current_date,'missing data')
+#            else:
+#                dates.append(current_date)
+#                highs.append(high)
+#                lows.append(low)
+#                test_list.append(f2_date)
 
 
 
@@ -66,11 +66,12 @@ def draw(filename1,filename2,string):
     format_list.sort(key=test_list.index)
     #print("format_list.sort = ",format_list)
 
-    plt.plot(format_list,highs,c='red')
+    plt.plot(dates,highs,c='red')
+    plt.plot(dates,lows,c='blue')
     #plt.plot(format_list,lows,c='blue')
     #填充温差颜色
-    #plt.fill_between(format_list,highs,lows,facecolor='blue',alpha=0.1)
-    #fig.autofmt_xdate()
+    plt.fill_between(dates,highs,lows,facecolor='blue',alpha=0.1)
+    fig.autofmt_xdate()
     plt.xlabel('',fontsize=16)
     plt.ylabel("Temperatures(F)",fontsize=16)
     plt.tick_params(axis='both',which='major',labelsize=16)
